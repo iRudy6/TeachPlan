@@ -1,0 +1,64 @@
+<section data-ng-controller="PeopleEditController as peopleEditCtrl">
+
+ <div class="modal-header">
+            <h3 class="modal-title">{{person.firstname}} {{person.lastname}}</h3>
+ </div>
+<div class="modal-body">
+    <form name="updatePersonForm">
+        <fieldset>
+            <div class="row">
+                <div class="col-sm-6 text-center">
+                    <i class="glyphicon glyphicon-user cust-list" ng-class="{'text-primary': person.phone, 'text-pink': !person.phone }"></i>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label" for="firstname">Firstname</label>
+                        <div class="controls">
+                            <input type="text" data-ng-model="person.firstname" id="firstname" class="form-control" placeholder="Firstname" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="lastname">Lastname</label>
+                        <div class="controls">
+                            <input type="text" data-ng-model="person.lastname" id="lastname" class="form-control" placeholder="Lastname" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="phone">Genre</label>
+                        <div class="controls">
+                            <select data-ng-model="person.genre" id="genre" class="form-control" ng-options="genre.name as genre.name for genre in genres">
+                                <option value=""> -- choose genre --</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="email">Email</label>
+                        <div class="controls">
+                            <input type="text" data-ng-model="person.email" id="email" class="form-control" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="phone">Phone</label>
+                        <div class="controls">
+                            <input type="text" data-ng-model="person.phone" id="phone" class="form-control" placeholder="Phone">
+                        </div>
+                    </div>
+                </div>
+                <div data-ng-show="error" class="text-danger">                    
+                    <strong data-ng-bind="error"></strong>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-danger" ng-click="peopleEditCtrl.remove(person);ok()">
+        Delete
+    </button>
+    <button class="btn btn-success" type="button" ng-click="peopleEditCtrl.update(person);ok()" ng-disabled="updatePersonForm.$invalid">Update & close</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>
+
+</section>

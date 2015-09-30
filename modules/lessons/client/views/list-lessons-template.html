@@ -1,0 +1,25 @@
+		<nav>
+		  <ul class="pagination">
+		    <li>
+		      <a class="pointer" ng-click="lessonsCtrl.showGroupAndClear()" aria-label="Previous">
+		        <span aria-hidden="true">Clear</span>
+		      </a>
+		    </li>
+		    <li>
+		      <a class="pointer" ng-click="lessonsCtrl.showGroup=true" aria-label="Previous">
+		        <span aria-hidden="true">&laquo;</span>
+		      </a>
+		    </li>
+		    <li data-ng-repeat="lesson in lessonsCtrl.lessons | filterByGroupId:groupsCtrl.group._id">
+		    	<a class="pointer" ng-click="lessonsCtrl.lessonChanged(lesson)">
+		    	<span>{{lesson.name}}</span><br/>
+		    	<!-- <span>{{lesson.createDate}}</span> -->
+		    </a>
+			</li>
+		    <li>
+		      <a class="pointer" href="#" aria-label="Next">
+		        <span aria-hidden="true">&raquo;</span>
+		      </a>
+		    </li>
+		  </ul>
+		</nav>    	
